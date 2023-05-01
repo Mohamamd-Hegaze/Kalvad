@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Kalvad_API_Test.props" />
+</Project>

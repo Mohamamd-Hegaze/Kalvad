@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kalvad_API_Test", "Kalvad_API_Test\Kalvad_API_Test.csproj", "{FC2AACE3-6A55-4BAD-9067-EDD9F72D7C30}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC2AACE3-6A55-4BAD-9067-EDD9F72D7C30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC2AACE3-6A55-4BAD-9067-EDD9F72D7C30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC2AACE3-6A55-4BAD-9067-EDD9F72D7C30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC2AACE3-6A55-4BAD-9067-EDD9F72D7C30}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7E9C529F-BBFD-4DF6-AA8D-B9FF13CC4102}
+	EndGlobalSection
+EndGlobal
