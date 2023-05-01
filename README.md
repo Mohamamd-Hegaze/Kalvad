@@ -1,0 +1,2 @@
+- Create Database Kalvad.
+- Execute the sql file inside folder DB.
