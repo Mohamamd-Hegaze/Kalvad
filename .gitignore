@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/Kalvad_API_Test/.vs/
+/Kalvad_API_Test/Kalvad_API_Test/bin/
+/Kalvad_API_Test/Kalvad_API_Test/obj/
