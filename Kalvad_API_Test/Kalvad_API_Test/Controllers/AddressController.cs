@@ -23,8 +23,10 @@ namespace Kalvad_API_Test.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(204)]
+        [ProducesResponseType(201)]
         [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
         // Create an address for this customer
         public IActionResult CreateAddress(string customerId, [FromBody] AddressDto addressCreate)
         {
@@ -37,7 +39,7 @@ namespace Kalvad_API_Test.Controllers
             if (customer == null)
             {
                 ModelState.AddModelError("", "Customer is not exists");
-                return StatusCode(422, ModelState);
+                return StatusCode(404, ModelState);
             }
 
             if (!ModelState.IsValid)
@@ -52,13 +54,14 @@ namespace Kalvad_API_Test.Controllers
                 return StatusCode(500, ModelState);
             }
 
-            return Ok("Successfully created");
+            return StatusCode(201, "Successfully created");
         }
 
         [HttpDelete("{customerId}/address/{addressId}")]
         [ProducesResponseType(400)]
-        [ProducesResponseType(204)]
+        [ProducesResponseType(200)]
         [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
         // Delete the address of the customer
         public IActionResult DeleteAddress(string customerId, string addressId)
         {
@@ -68,7 +71,7 @@ namespace Kalvad_API_Test.Controllers
             if (customer == null)
             {
                 ModelState.AddModelError("", "Customer is not exists");
-                return StatusCode(422, ModelState);
+                return StatusCode(404, ModelState);
             }
 
             var addressToDelete = _addressRepository.GetAddressById(addressId);
@@ -78,11 +81,13 @@ namespace Kalvad_API_Test.Controllers
                 if (!_addressRepository.DeleteAddress(addressToDelete))
                 {
                     ModelState.AddModelError("", "Something went wrong deleting address");
+                    return StatusCode(500, ModelState);
                 }
                 return Ok("Deleted");
             }
             // The Address is not exists.
-            return NoContent();
+            ModelState.AddModelError("", "Address is not exists");
+            return StatusCode(404, ModelState);
         }
     }
 }

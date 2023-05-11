@@ -23,8 +23,9 @@ namespace Kalvad_API_Test.Controllers
 
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Customer>))]
+        [ProducesResponseType(400)]
         // Get all customers
-        public IActionResult GetCustomers()
+        public IActionResult GetCustomers() 
         {
             var customers = _csustomerRepository.GetCustomers();
             // var customers = _mapper.Map<List<CustomerDto>>(_csustomerRepository.GetCustomers());
@@ -79,8 +80,10 @@ namespace Kalvad_API_Test.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(201)]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
+        [ProducesResponseType(500)]
         // Create a customer
         public IActionResult CreateCustomer([FromBody] CustomerDto customerCreate)
         {
@@ -95,7 +98,7 @@ namespace Kalvad_API_Test.Controllers
             if (customer != null)
             {
                 ModelState.AddModelError("", "Customer already exists");
-                return StatusCode(422, ModelState);
+                return StatusCode(204, ModelState);
             }
 
             if (!ModelState.IsValid)
@@ -110,7 +113,7 @@ namespace Kalvad_API_Test.Controllers
                 return StatusCode(500, ModelState);
             }
 
-            return Ok("Successfully created");
+            return StatusCode(201,"Successfully created");
         }
     }
 }
