@@ -5,7 +5,7 @@ namespace Kalvad_API_Test.Interfaces
 {
     public interface IAddressRepository
     {
-        Address? GetAddressById(int id);
+        Address? GetAddressById(string id);
         bool CreateAddress(Address address);
         bool DeleteAddress(Address address);
     }

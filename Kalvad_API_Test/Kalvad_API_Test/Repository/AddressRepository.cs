@@ -30,7 +30,7 @@ namespace Kalvad_API_Test.Repository
             return Save();
         }
 
-        public Address? GetAddressById(int id)
+        public Address? GetAddressById(string id)
         {
             return _context.Addresses.Where(c => c.Id == id).FirstOrDefault();
         }

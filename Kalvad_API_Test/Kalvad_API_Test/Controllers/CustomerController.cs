@@ -39,7 +39,7 @@ namespace Kalvad_API_Test.Controllers
         [ProducesResponseType(200, Type = typeof(Customer))]
         [ProducesResponseType(400)]
         // Get customer with the id defined
-        public IActionResult GetCustomerById(int Id)
+        public IActionResult GetCustomerById(string Id)
         {
 
             var customers = _csustomerRepository.GetCustomerById(Id);
@@ -101,7 +101,8 @@ namespace Kalvad_API_Test.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var customerMap = _mapper.Map<Customer>(customerCreate);
+            // var customerMap = _mapper.Map<Customer>(customerCreate);
+            var customerMap = customerCreate.GetCustomer();
 
             if (!_csustomerRepository.CreateCustomer(customerMap))
             {

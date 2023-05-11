@@ -26,7 +26,7 @@ namespace Kalvad_API_Test.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         // Create an address for this customer
-        public IActionResult CreateAddress(int customerId, [FromBody] AddressDto addressCreate)
+        public IActionResult CreateAddress(string customerId, [FromBody] AddressDto addressCreate)
         {
             if (addressCreate == null)
                 return BadRequest(ModelState);
@@ -43,8 +43,8 @@ namespace Kalvad_API_Test.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var addressMap = _mapper.Map<Address>(addressCreate);
-            addressMap.CustomerId = customerId;
+            // var addressMap = _mapper.Map<Address>(addressCreate);
+            var addressMap = addressCreate.GetAddress(customerId);
 
             if (!_addressRepository.CreateAddress(addressMap))
             {
@@ -60,7 +60,7 @@ namespace Kalvad_API_Test.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
         // Delete the address of the customer
-        public IActionResult DeleteAddress(int customerId, int addressId)
+        public IActionResult DeleteAddress(string customerId, string addressId)
         {
             // check the customer is exists.
             var customer = _csustomerRepository.GetCustomerById(customerId);

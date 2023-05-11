@@ -21,7 +21,7 @@ namespace Kalvad_API_Test.Repository
         {
             return _context.Customers.Include(c => c.Addresses).ToList();
         }
-        public Customer? GetCustomerById(int id)
+        public Customer? GetCustomerById(string id)
         {
             return _context.Customers.Where(c => c.Id == id).Include(c => c.Addresses).FirstOrDefault();
         }
